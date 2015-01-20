@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"fm4"
 	"fmt"
+	"github.com/chrigl/go-fm4/fm4"
 	"log"
 )
 
@@ -11,7 +11,7 @@ func printBroadcasts(broadcasts *[]fm4.Broadcasts) {
 	for _, x := range *broadcasts {
 		fmt.Println(x.DateISO)
 		for _, y := range x.Broadcasts {
-			fmt.Printf("  * %s (%s) - %s\n", y.Title, y.ProgramKey, y.StartISO)
+			fmt.Printf("  * %s: %s - %s\n", y.StartISO, y.ProgramKey, y.Title)
 			if y.Description != "" {
 				fmt.Printf("    %s\n", y.Description)
 			}
@@ -81,7 +81,7 @@ func main() {
 	if fm4.ChannelName == "" {
 		printBroadcasts(&resp)
 	} else {
-		// printStreamIds(fm4.ChannelName, &resp)
-		printStreamIds_naive(fm4.ChannelName, &resp)
+		printStreamIds(fm4.ChannelName, &resp)
+		// printStreamIds_naive(fm4.ChannelName, &resp)
 	}
 }
