@@ -238,6 +238,10 @@ func FetchStreamIds(channelName string, msgChan chan *Broadcast, doneChan chan b
 	}
 }
 
+func GetStreamId(streamId *string) string {
+	return LoopBaseUrl + *streamId
+}
+
 func PrintStreamId(streamId *string) {
-	fmt.Println(LoopBaseUrl + *streamId)
+	fmt.Println(GetStreamId(streamId))
 }
